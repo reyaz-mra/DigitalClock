@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        .namec{
+            position: absolute;
+            color: honeydew;
+            top: 20%;
+            left: 50%;
+            text-align: center;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .clock{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: chartreuse;
+            font-size: 40px;
+            transform: translateX(-50%) translateY(-50%);
+            height: 55px;
+            width: 260px;
+            background-color: crimson;
+            padding: 10px 10px;
+            
+            box-shadow: 2px 2px 2px 2px rgb(196, 192, 192);
+        }
+        .ownern{
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            color: ivory;
+            text-align: center;
+            transform: translateX(-50%) translateY(-50%);
+            font-family: 'Times New Roman', Times, serif;
+            background-color: lavenderblush;
+            color: rgb(94, 94, 0);
+            border-radius: 20px;
+            padding: 10px 10px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="name" class="namec"></div>
+<div id="DigitalClock" class="clock"></div>
+<div id="owner" class="ownern"></div>
+    <script>
+
+        var uname = prompt("Enter Your Name:");
+        if(uname==null){
+            uname="";
+        }
+        document.getElementById("name").innerHTML ="Thanks "+ uname+" for using my Digital Clock";
+        function showTime(){
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            var session = "AM";
+            if(h==0){
+                h = 12;
+            }
+            if(h>12){
+                h = h-12;
+            }
+            if(h>11){
+                session = "PM";
+            }
+
+            h = (h<10)?"0"+h:h;
+            m = (m<10)?"0"+m:m;
+            s = (s<10)?"0"+s:s;
+            document.getElementById("DigitalClock").innerHTML = h + " : "+ m + " : " +s + " "+session;
+
+            setTimeout(showTime,1);
+        }
+        showTime();
+        document.getElementById("owner").innerHTML = "This Digital Clock is Made by <b> Md Reyaz Alam </b>";
+    </script>
+</body>
+</html>
